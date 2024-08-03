@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>AJAX Update </title>
+ 
+</head>
+<body>
+    <h1>User List</h1>
+    <table id="userTable">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+      <!-- I made a quick easy HTML line to let ajax run using userconnections.php -->
+        <tr>
+            <td>1</td>
+            <td><input type="text" value="John Doe" id="name1"></td>
+            <td><input type="text" value="john@example.com" id="email1"></td>
+            <td><button onclick="updateUser(1)">Update</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><input type="text" value="Jane Doe" id="name2"></td>
+            <td><input type="text" value="jane@example.com" id="email2"></td>
+            <td><button onclick="updateUser(2)">Update</button></td>
+        </tr>
+    </table>
+
+    <script>
+        function updateUser(id) {
+            var name = $('#name' + id).val();
+            var email = $('#email' + id).val();
+
+            $.ajax({
+                type: "POST",
+                url: "userconnections.php",
+                data: { id: id, name: name, email: email },
+                success: function(response) {
+                    alert(response);
+                },
+                error: function() {
+                    alert("Error updating record.");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
