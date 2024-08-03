@@ -32,6 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $conn->close();
 
-//I kept it a bit basic and made a 
+//I kept it a bit basic and made a user fetcher script to find users!!
 
 ?>
